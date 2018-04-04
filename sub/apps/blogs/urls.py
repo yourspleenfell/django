@@ -3,8 +3,8 @@ from . import views           # This line is new!
 urlpatterns = [
 url(r'^$', views.index),
 url(r'^new', views.new),
-url(r'^create', views.create),
-url(r'^show', views.show),
-url(r'^edit', views.edit),
-url(r'^destroy', views.destroy)     # This line has changed!
+url(r'^create$', views.create),
+url(r'^[0-9]+$', views.show),
+url(r'^[0-9]+/(edit)$', views.edit),
+url(r'^[0-9]+/(delete)$', views.destroy)    # This line has changed!
 ]
