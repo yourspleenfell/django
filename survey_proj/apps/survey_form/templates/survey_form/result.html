@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'survey_form/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+        <title>Survey Results</title>
+    </head>
+    <body>
+        <div id="thanks">
+            <p>Thanks for submitting the form! It was great, wasn't it? You have submitted the form {{ request.session.count }} times now.</p>
+        </div>
+        <div id="form">
+            <h1>Submitted Information</h1>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Name: </td>
+                        <td>{{ request.session.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Dojo Location: </td>
+                        <td>{{ request.session.location }}</td>
+                    </tr>
+                    <tr>
+                        <td>Favorite Language: </td>
+                        <td>{{ request.session.language }}</td>
+                    </tr>
+                    <tr>
+                        <td>Comment (optional): </td>
+                        <td>{{ request.session.comment }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><form action="/" method="post">
+                            {% csrf_token %}
+                                <input type="submit" name="home" value="Go Back">
+                            </form></td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+    </body>
+</html>
