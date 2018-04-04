@@ -1,0 +1,13 @@
+#wrapper {
+    margin: auto;
+    width: 500px;
+    text-align: center;
+}
+.word {
+    margin: 10px 150px 10px 150px;
+    width: 200px;
+    border: 1px solid;
+}
+input {
+    margin: 5px;
+}
