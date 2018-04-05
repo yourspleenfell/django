@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, HttpResponse, redirect
-from django.utils.crypto import get_random_string
+import random
 
 # Create your views here.
 def index(request):
@@ -12,9 +12,12 @@ def index(request):
 
 def submit(request):
     request.session['attempts'] += 1
+    letter_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     context = {
-        'word': get_random_string(length=14)
+        'word': ""
     }
+    for val in range(14):
+        context['word'] += random.choice(letter_list)
     return render(request, 'random_word/index.html', context)
 
 def clear(request):
