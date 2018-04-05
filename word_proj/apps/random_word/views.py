@@ -17,7 +17,8 @@ def submit(request):
         'word': ""
     }
     for val in range(14):
-        context['word'] += random.choice(letter_list)
+        x = random.randint(0, 51)
+        context['word'] += letter_list[x]
     return render(request, 'random_word/index.html', context)
 
 def clear(request):
