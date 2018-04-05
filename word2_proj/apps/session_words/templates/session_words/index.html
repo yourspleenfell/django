@@ -19,6 +19,7 @@
                     <li><input type="radio" name="color" value="blue"><label for="color">Blue</label></li>
                 </ul>
                 <input type="checkbox" name="big" value="big">Show in BIG fonts!
+                <input type="hidden" name="time" value="{{ time }}">
                 <input type="submit" name="submit" value="Add to Session" class="submit">
             </form>
         </div>
@@ -27,8 +28,8 @@
             {% csrf_token %}
                 <input type="submit" name="clear" value="Clear Session" class="clear">
             </form>
-            {% for data in request.session.list %}
-                    <p><span class="{{ data.1 }} {{ data.2 }}">{{ data.0 }}</span> - added on {{ data.3 }}</p>
+            {% for color in request.session.list %}
+                    <p><span class="{{ color.color }} {{ color.big }}">{{ color.word }}</span> - added on {{ color.time }}</p>
             {% endfor %}
         </div>
     </body>
