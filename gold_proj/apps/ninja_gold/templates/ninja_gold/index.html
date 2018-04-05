@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'ninja_gold/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+        <title>Ninja Gold</title>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="hud">
+                <p>Your Gold:</p>
+                <span>{{ request.session.gold }}</span>
+            </div>
+            <div class="location" id="farm">
+                <h2>Farm</h2>
+                <p>(earns 10-20 gold)</p>
+                <form action="ninja_gold/farm" method="post">
+                    {% csrf_token %}
+                    <input type="submit" name="find_gold" value="Loot the Farm">
+                </form>
+            </div>
+            <div class="location" id="cave">
+                <h2>Cave</h2>
+                <p>(earns 5-10 gold)</p>
+                <form action="ninja_gold/cave" method="post">
+                    {% csrf_token %}
+                    <input type="submit" name="find_gold" value="Explore the Cave">
+                </form>
+            </div>
+            <div class="location" id="house">
+                <h2>House</h2>
+                <p>(earns 2-5 gold)</p>
+                <form action="ninja_gold/house" method="post">
+                    {% csrf_token %}
+                    <input type="submit" name="find_gold" value="Search the House">
+                </form>
+            </div>
+            <div class="location" id="casino">
+                <h2>Casino</h2>
+                <p>(earns/takes 0-50 gold)</p>
+                <form action="ninja_gold/casino" method="post">
+                    {% csrf_token %}
+                    <input type="submit" name="find_gold" value="Gamble at Casino">
+                </form>
+            </div>
+            <p>Activites:</p>
+            <div id="activites">
+                {% for activity in request.session.log reversed %}
+                    <p class="{{ activity.1 }}">{{ activity.0 }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>

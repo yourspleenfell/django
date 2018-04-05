@@ -1,0 +1,51 @@
+#wrapper {
+    width: 920px;
+    margin: 1% auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+input {
+    margin: 10px;
+}
+p {
+    display: inline-block;
+}
+.red {
+    color: #FF0000;
+}
+.green {
+    color: #15911b;
+}
+.location {
+    display: inline-block;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+    border: 2px solid black;
+}
+#activites {
+    width: 885px;
+    height: 200px;
+    padding: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+    border: 2px solid;
+    background-color: #000;
+}
+#farm {
+    background-image: url(../img/farm.gif);
+    color: #FFF;
+}
+#cave {
+    background-image: url(../img/cave.png);
+    color: #FFF;
+}
+#house {
+    background-image: url(../img/house.png);
+    background-size: cover;
+    color: #FFF;
+}
+#casino {
+    background-image: url(../img/casino.png);
+    background-size: cover;
+    color: #FFF;
+}
