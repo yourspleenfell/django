@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Amadon | Shop</title>
+    </head>
+    <body>
+        <div class="containter-fluid">
+            <h1>Amadon Store</h1>
+            <div class="row">
+                <div class="col-6 col-md-2">
+                    <h5>Item</h5>
+                </div>
+                <div class="col-6 col-md-2">
+                    <h5>Price</h5>
+                </div>
+                <div class="col-6 col-md-2">
+                    <h5>Actions</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-2">
+                    Dojo T-shirt
+                </div>
+                <div class="col-6 col-md-2">
+                    $19.99
+                </div>
+                <div class="col-6 col-md-2">
+                    <form action="/amadon/buy" method="post">
+                        {% csrf_token %}
+                        <select name="quantity">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <input type="submit" name="submit" value="Add to Cart">
+                        <input type="hidden" name="product_id" value="1015">
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-2">
+                    Dojo Sweater
+                </div>
+                <div class="col-6 col-md-2">
+                    $29.99
+                </div>
+                <div class="col-6 col-md-2">
+                    <form action="/amadon/buy" method="post">
+                        {% csrf_token %}
+                        <select name="quantity">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <input type="submit" name="submit" value="Add to Cart">
+                        <input type="hidden" name="product_id" value="2087">
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-2">
+                    Dojo Cup
+                </div>
+                <div class="col-6 col-md-2">
+                    $4.99
+                </div>
+                <div class="col-6 col-md-2">
+                    <form action="/amadon/buy" method="post">
+                        {% csrf_token %}
+                        <select name="quantity">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <input type="submit" name="submit" value="Add to Cart">
+                        <input type="hidden" name="product_id" value="3916">
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-2">
+                    Algorithm Book
+                </div>
+                <div class="col-6 col-md-2">
+                    $49.99
+                </div>
+                <div class="col-6 col-md-2">
+                    <form action="/amadon/buy" method="post">
+                        {% csrf_token %}
+                        <select name="quantity">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <input type="submit" name="submit" value="Add to Cart">
+                        <input type="hidden" name="product_id" value="4521">
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <form action="/checkout">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
