@@ -15,14 +15,6 @@ def index(request):
     return render(request, 'session_words/index.html', context)
 
 def submit(request):
-    # if 'big' not in request.POST:
-    #     big = ""
-    # else:
-    #     big = request.POST['big']
-    # if 'color' not in request.POST:
-    #     color = ""
-    # else:
-    #     color = request.POST['color']
     request.session['list'].append(request.POST)
     request.session.modified = True
     return redirect('/')
