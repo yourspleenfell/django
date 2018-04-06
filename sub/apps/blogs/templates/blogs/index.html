@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        {{email}} and {{name}}
+        {{value}}
         <form action="/blogs/create" method="post">
             {% csrf_token %}
             Blog Name: <input type="text" name="name" placeholder="blog name">

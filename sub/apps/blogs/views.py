@@ -10,10 +10,8 @@ from django.utils.crypto import get_random_string
 
 def index(request):
     context = {
-        'email': 'blog@gmail.com',
-        'name': 'mike'
+        'value': "placeholder to later display all the list of blogs"
     }
-    # response = "placeholder to later display all the list of blogs"
     return render(request, 'blogs/index.html', context)
 
 def new(request):
@@ -25,19 +23,17 @@ def create(request):
 		print "*"*50
 		print request.POST
 		print "*"*50
-		return redirect("/")
+		return redirect("/blogs")
 	else:
-		return redirect("/")
+		return redirect("/blogs")
 
-def show(number):
-    response = "placeholder to display blog {{number}}"
+def show(request, num):
+    response = "placeholder to display blog " + num
     return HttpResponse(response)
 
-def edit(request, edit):
-    number = request
-    print number
-    response = "placeholder to edit blog {{request}}"
+def edit(request, num):
+    response = "placeholder to edit blog " + num
     return HttpResponse(response)
 
-def destroy(request, delete):
-    return redirect('/')
+def destroy(request, num):
+    return redirect('/blogs')
