@@ -1,0 +1,33 @@
+<! DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Users Assignment</title>
+    </head>
+    <body>
+        <h1>Users</h1>
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email Address</th>
+                <th>Age</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.first_name }} {{ user.last_name }}</td>
+                    <td>{{ user.email_address }}</td>
+                    <td>{{ user.age }}</td>
+                    <td>{{ user.created_at }}</td>
+                    <td><a href="{{ user.id }}">Show</a> | <a href="{{ user.id }}/edit">Edit</a> | <a href="{{ user.id }}/destroy">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="new">Add a New User</a>
+    </body>
+</html>
