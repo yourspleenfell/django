@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static%}
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'login/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+        <title>Awesome Website</title>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                    <img src="{% static 'login/img/redpanda_transparent.png' %}" alt="">
+                {% if 'user' not in request.session %}
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="email" placeholder="Email address">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="submit" name="submit" value="Login">
+                </form>
+                {% else %}
+                <span>Welcome {{ request.session.name }}</span>
+                {% endif %}
+            </div>
+            <div id="nav">
+                <ul>
+                    {% if 'user' not in request.session %}
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/register">Register</a></li>
+                    {% else %}
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/user/{{ request.session.user }}">User Dashboard</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <img src="{% static 'login/img/redpanda.jpg' %}" alt="Adorable Red Panda!">
+            <div id="content">
+                <p>Hello {{ request.session.name }}</p>
+                <p>Did you enjoy the party? What party, you may be asking? Well, it just so happens to be a surprise. So.... surprise!</p>
+            </div>
+        </div>
+    </body>
+</html>
