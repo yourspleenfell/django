@@ -7,7 +7,7 @@
     </head>
     <body>
         <div id="header">
-            <h1>Welcome {{ request.session.name }}</h1>
+            <h1>Welcome <a href="/users/{{ request.session.id }}">{{ request.session.name }}</a></h1>
             <a href="/books">Home</a> | <a href="logout">Logout</a>
         </div>
         <div id="left">

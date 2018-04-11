@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^books/(?P<id>\d+)$', views.view_book, name="show_book"),
     url(r'^books/(?P<id>\d+)/create_review$', views.create_review),
     url(r'^users/(?P<id>\d+)$', views.show_user),
-    # url(r'^books/delete/review$', views.delete_review),
+    url(r'^books/delete/review/(?P<id>\d+)$', views.delete_review),
 ]

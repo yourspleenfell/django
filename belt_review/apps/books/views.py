@@ -105,3 +105,10 @@ def show_user(request, id):
         'reviewed_books': Review.objects.filter(user = id),
     }
     return render(request, 'books/user.html', user_info)
+
+def delete_review(request, id):
+    print id
+    title = Review.objects.get(id = id).book.title
+    messages.success(request,'Successfully deleted review for ' + title)
+    Review.objects.get(id = id).delete()
+    return redirect('/books')
