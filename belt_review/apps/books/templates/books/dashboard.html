@@ -19,7 +19,7 @@
         </div>
         <div class="row white">
             <div class="col-6">
-                <h4>Recent Book Reviews:</h4>
+                <h3>Recent Book Reviews:</h3>
                 {% for review in reviews %}
                 <div class="content">
                     <span class="label"><a href="/books/{{ review.book.id }}">{{ review.book.title }}</a> </span>| <em>{{ review.book.author.first_name }} {{ review.book.author.last_name }}</em>
@@ -50,7 +50,7 @@
                 {% endfor %}
             </div>
             <div class="col-6">
-                <h4>Other Books with Reviews:</h4>
+                <h3>Other Books with Reviews:</h3>
                 <div class="scroll">
                     {% for book in books %}
                         <p><a href="/books/{{ book.id }}" >{{ book.title }}</a></p>
