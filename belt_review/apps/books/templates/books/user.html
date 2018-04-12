@@ -1,25 +1,49 @@
 <!DOCTYPE html>
-{% load static %}
 <html>
     <head>
+        {% load static %}
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'books/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
         <title>{{ user.first_name }} {{ user.last_name }} | {{ user.alias }}</title>
     </head>
     <body>
-        <div id="header">
-            <h1>Welcome <a href="/users/{{ request.session.id }}">{{ request.session.name }}</a></h1>
-            <a href="/books">Home</a> | <a href="logout">Logout</a>
+        <div class="row header">
+            <div class="col-10">
+                <h1>Welcome, <a href="/users/{{ request.session.id }}">{{ request.session.name }}</a></h1>
+            </div>
+            <div class="col-2">
+                <a href="/books">Home</a> | <a href="logout">Logout</a>
+            </div>
         </div>
-        <div id="left">
-            <h3>User Alias: {{ user.alias }}</h3>
-            <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
-            <p>Email: {{ user.email }}</p>
-            <p>Total Reviews: {{ total_reviews }}</p>
+        <div class="row white">
+            <div class="col-12">
+                <h3>User Alias: {{ user.alias }}</h3>
+                <p><span class="label">Name: </span>{{ user.first_name }} {{ user.last_name }}</p>
+                <p><span class="label">Email: </span>{{ user.email }}</p>
+                <p><span class="label">Total Reviews: </span>{{ total_reviews }}</p>
 
-            <h4>Posted Reviews on the following books:</h4>
-            {% for book in reviewed_books %}
-                <p><a href="/books/{{ book.book.id }}">{{ book.book.title }}</a></p>
-            {% endfor %}
+                <h4>Posted Reviews on the following books:</h4>
+                {% for book in reviewed_books %}
+                    <p><a href="/books/{{ book.book.id }}">{{ book.book.title }}</a>
+                        {% if book.rating is 5 %}
+                            <span class="checked">&#9733</span><span class="checked">&#9733</span><span class="checked">&#9733</span><span class="checked">&#9733</span><span class="checked">&#9733</span>
+                        {% endif %}
+                        {% if book.rating is 4 %}
+                            <span class="checked">&#9733</span><span class="checked">&#9733</span><span class="checked">&#9733</span><span class="checked">&#9733</span><span class="empty">&#9733</span>
+                        {% endif %}
+                        {% if book.rating is 3 %}
+                            <span class="checked">&#9733</span><span class="checked">&#9733</span><span class="checked">&#9733</span><span class="empty">&#9733</span><span class="empty">&#9733</span>
+                        {% endif %}
+                        {% if book.rating is 2 %}
+                            <span class="checked">&#9733</span><span class="checked">&#9733</span><span class="empty">&#9733</span><span class="empty">&#9733</span><span class="empty">&#9733</span>
+                        {% endif %}
+                        {% if book.rating is 1 %}
+                            <span class="checked">&#9733</span><span class="empty">&#9733</span><span class="empty">&#9733</span><span class="empty">&#9733</span><span class="empty">&#9733</span>
+                        {% endif %}
+                    </p>
+                {% endfor %}
+            </div>
         </div>
     </body>
 </html>
