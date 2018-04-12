@@ -15,8 +15,9 @@ def create_user(request):
     errors = User.objects.validator(request.POST)
     if len(errors):
         for tag, error in errors.iteritems():
+            print error
             messages.error(request, error, extra_tags=tag)
-        return redirect('/')
+            return redirect('/')
     first_name = request.POST['first_name']
     last_name = request.POST['last_name']
     alias = request.POST['alias']
@@ -40,7 +41,8 @@ def login(request):
     try:
         if user_login['login']:
             for tag, item in user_login.iteritems():
-                messages.error(request, item)
+                print tag
+                messages.error(request, item, extra_tags=tag)
                 return redirect('/')
     except:
         request.session['id'] = user_login.id
@@ -63,7 +65,7 @@ def create_book(request):
     errors = Book.objects.validator(request.POST)
     if errors:
         for tag, item in errors.iteritems():
-            messages.error(request, item)
+            messages.error(request, item, extra_tags='login')
             return redirect('/books/add')
     else:
         user_id = request.session['id']
@@ -107,7 +109,6 @@ def show_user(request, id):
     return render(request, 'books/user.html', user_info)
 
 def delete_review(request, id):
-    print id
     title = Review.objects.get(id = id).book.title
     messages.success(request,'Successfully deleted review for ' + title)
     Review.objects.get(id = id).delete()

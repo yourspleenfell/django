@@ -1,32 +1,62 @@
 <!DOCTYPE html>
-{% load static %}
 <html>
     <head>
+        {% load static %}
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'books/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
         <title>Books Home</title>
     </head>
     <body>
-        <div id="header">
-            <h1>Welcome <a href="/users/{{ request.session.id }}">{{ request.session.name }}</a></h1>
-            <a href="books/add">Add Book and Review</a> | <a href="logout">Logout</a>
+        <div class="row header">
+            <div class="col-10">
+                <h1>Welcome, <a href="/users/{{ request.session.id }}">{{ request.session.name }}</a></h1>
+
+            </div>
+            <div class="col-2">
+                <a href="books/add">Add Book and Review</a> | <a href="logout">Logout</a>
+            </div>
         </div>
-        <div id="left">
-            <h4>Recent Book Reviews:</h4>
-            {% for review in reviews %}
-                <a href="/books/{{ review.book.id }}">{{ review.book.title }}</a> | <em>{{ review.book.author.first_name }} {{ review.book.author.last_name }} {{ review.book.id }}</em>
-                <p>Rating: {{ review.rating }} / 5</p>
-                <p><a href="/users/{{ review.user.id }}">{{ review.user.alias }}</a>: {{ review.content }}</p>
-                <p>Posted On: {{ review.created_at }}
-                {% if review.user.id == request.session.id %}
-                     | <a href="/books/delete/review/{{ review.id }}">Delete this Review</a>
-                {% endif %}</p>
-            {% endfor %}
-        </div>
-        <div id="right">
-            <h4>Other Books with Reviews:</h4>
-            {% for book in books %}
-                <p><a href="/books/{{ book.id }}" >{{ book.title }}</a></p>
-            {% endfor %}
-        </div>
+        <div class="row white">
+            <div class="col-6">
+                <h4>Recent Book Reviews:</h4>
+                {% for review in reviews %}
+                <div class="content">
+                    <span class="label"><a href="/books/{{ review.book.id }}">{{ review.book.title }}</a> </span>| <em>{{ review.book.author.first_name }} {{ review.book.author.last_name }}</em>
+                    <p><span class="label">Rating: </span>
+                        {% if review.rating is 5 %}
+                            <span class="checked">&#9733</span><span class="checked">&#9733</span><span class="checked">&#9733</span><span class="checked">&#9733</span><span class="checked">&#9733</span>
+                        {% endif %}
+                        {% if review.rating is 4 %}
+                            <span class="checked">&#9733</span><span class="checked">&#9733</span><span class="checked">&#9733</span><span class="checked">&#9733</span><span class="empty">&#9733</span>
+                        {% endif %}
+                        {% if review.rating is 3 %}
+                            <span class="checked">&#9733</span><span class="checked">&#9733</span><span class="checked">&#9733</span><span class="empty">&#9733</span><span class="empty">&#9733</span>
+                        {% endif %}
+                        {% if review.rating is 2 %}
+                            <span class="checked">&#9733</span><span class="checked">&#9733</span><span class="empty">&#9733</span><span class="empty">&#9733</span><span class="empty">&#9733</span>
+                        {% endif %}
+                        {% if review.rating is 1 %}
+                            <span class="checked">&#9733</span><span class="empty">&#9733</span><span class="empty">&#9733</span><span class="empty">&#9733</span><span class="empty">&#9733</span>
+                        {% endif %}
+                    </p>
+                    <p><span class="label"><a href="/users/{{ review.user.id }}">{{ review.user.alias }}</a> says: </span>{{ review.content }}</p>
+                    <p><span class="label">Posted On: </span> {{ review.created_at }}
+                    {% if review.user.id == request.session.id %}
+                        | <a href="/books/delete/review/{{ review.id }}">Delete this Review</a>
+                    {% endif %}
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-6">
+                <h4>Other Books with Reviews:</h4>
+                <div class="scroll">
+                    {% for book in books %}
+                        <p><a href="/books/{{ book.id }}" >{{ book.title }}</a></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>   
     </body>
 </html>
